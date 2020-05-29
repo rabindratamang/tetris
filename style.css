@@ -1,7 +1,12 @@
+body{
+    background-color: #242424;
+    color: #d1cbcb;
+}
+
 .container{
     display: flex;
     width: 30%;
-    margin: auto;
+    margin: 5% auto;
 }
 
 .grid{
@@ -9,34 +14,54 @@
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #31BC99;
+    /* background-color: #31BC99; */
+    background-color: rgb(48,48,48);
 }
 
 .grid div{
     height: 20px;
     width: 20px;
     box-sizing: border-box;
-
+    background-color: 1px solid #303030;
 }
 
 .tetromino{
     background-color: #376056;
-    border: 1px solid white;
+    border: 1px solid #303030;
     /* background-color: #7BE5CB; */
 }
 
+.score-panel{
+    margin-left: 50px;
+}
 
 .mini-grid{
-    margin-left: 50px;
     width: 80px;
     height: 80px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #31BC99;
+    background-color: rgb(48,48,48);
 }
 
 .mini-grid div{
     height: 20px;
     width: 20px;
     box-sizing: border-box;
+}
+
+#score {
+    display: block;
+    background-color: rgb(48,48,48);
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 24px;
+    font-size: 1rem;
+    background-color: #5b755a;
+    color: white;
 }

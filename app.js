@@ -7,13 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let nextRandom = 0;
     let timerId;
+    let audio = new Audio('./Assets/Sounds/game.mp3');
+    audio.loop = true;
 
     const colors = [
-        '#376056',
-        '#D1758C',
-        '#8277BD',
-        '#1BDB63',
-        '#D96629'
+        '#56A753',
+        '#FEEE34',
+        '#EB412F',
+        '#F07A2C',
+        '#3BB0EE'
     ]
 
     const lTetromino = [
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.addEventListener('keyup',control)
+    document.addEventListener('keydown',control)
 
      //move down function
     function moveDown(){
@@ -186,12 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //add functionality to button
     startButton.addEventListener('click',function(){
         if(timerId){
-             clearInterval(timerId);
-             timerId = null;
+            clearInterval(timerId);
+            timerId = null;
+            audio.pause();
         } else {
+            audio.play();
             draw();
             timerId = setInterval(moveDown, 1000);
-            nextRandom  = Math.floor(Math.random() * theTetrominoes.length);
+            // nextRandom  = Math.floor(Math.random() * theTetrominoes.length);
             displayShape();
         }
     });
