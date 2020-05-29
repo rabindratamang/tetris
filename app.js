@@ -93,17 +93,23 @@ document.addEventListener('DOMContentLoaded', () => {
     //assign function to keyCode
     function control(e){
         if(gamePaused) return false;
-
-        if(e.keyCode === 37){
-            moveLeft();
-        } else if(e.keyCode === 38){
-            rotate();
-        } else if(e.keyCode === 39){
-            moveRight();
-        } else if(e.keyCode === 40 ){
-            playAudio(moveAudio);
-            moveDown();
-        }
+        switch (e.keyCode) {
+            case 37:
+                moveLeft();
+                break;
+            case 38:
+                rotate();
+                break;
+            case 39:
+                moveRight();
+                break;
+            case 40:
+                playAudio(moveAudio);
+                moveDown();
+                break;
+            default:
+                return false;
+          }
     }
 
     document.addEventListener('keydown',control)
