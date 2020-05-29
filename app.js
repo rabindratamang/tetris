@@ -14,6 +14,7 @@ window.addEventListener('load', () => {
     let gamePaused;
 
     let gameAudio = new Audio('./Assets/Sounds/game.mp3');
+    let gameOverAudio = new Audio('./Assets/Sounds/gameover.mp3');
     let moveAudio = new Audio('./Assets/Sounds/move.mp3');
     let rotateAudio = new Audio('./Assets/Sounds/rotate.mp3');
     let takenAudio = new Audio('./Assets/Sounds/taken.mp3');
@@ -252,6 +253,8 @@ window.addEventListener('load', () => {
 
     function gameOver(){
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+            stopAudio(gameAudio);
+            playAudio(gameOverAudio);
             scoreDisplay.innerHTML = "Game Over";
             gamePaused = true;
             clearInterval(timerId);
@@ -260,6 +263,11 @@ window.addEventListener('load', () => {
   
     function playAudio(audio){
         (!audio.paused) ? audio.cloneNode().play() : audio.play();
+    }
+
+    function stopAudio(audio){
+        audio.pause();
+        audio.currentTime = 0;
     }
 })
 
