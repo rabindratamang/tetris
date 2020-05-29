@@ -188,10 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //add functionality to button
     startButton.addEventListener('click',function(){
         if(timerId){
+            startButton.innerHTML = "<i class='fa fa-play'></i> Play"
+            startButton.style.backgroundColor = "#30942d"
             clearInterval(timerId);
             timerId = null;
             audio.pause();
         } else {
+            startButton.innerHTML = "<i class='fa fa-pause'></i> Pause"
+            startButton.style.backgroundColor = "#ff8c00"
             audio.play();
             draw();
             timerId = setInterval(moveDown, 1000);

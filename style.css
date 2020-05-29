@@ -1,6 +1,7 @@
 body{
     background-color: #242424;
     color: #d1cbcb;
+    font-family: sans-serif;
 }
 
 .container{
@@ -16,6 +17,8 @@ body{
     flex-wrap: wrap;
     /* background-color: #31BC99; */
     background-color: rgb(48,48,48);
+    box-shadow: 2px 2px 5px #5a575780,
+    inset 5px 5px 8px #2b252580;
 }
 
 .grid div{
@@ -33,6 +36,7 @@ body{
 
 .score-panel{
     margin-left: 50px;
+    
 }
 
 .mini-grid{
@@ -43,31 +47,36 @@ body{
     display: flex;
     flex-wrap: wrap;
     background-color: rgb(48,48,48);
+    box-shadow: 2px 2px 5px #5a575780,
+    inset 5px 5px 8px #2b252580;
 }
 
 .mini-grid div{
     height: 20px;
     width: 20px;
     box-sizing: border-box;
+  
 }
 
 #score {
     display: block;
+    font-size: 1.5rem;
     background-color: rgb(48,48,48);
     padding: 8px;
     margin-bottom: 20px;
+    box-shadow: 2px 2px 5px #5a575780,
+    inset 5px 5px 8px #2b252580;
 }
 
 button {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 8px 24px;
+    padding: 8px 22px;
     font-size: 1rem;
-    background-color: #5b755a;
+    background-color: #30942d;
     color: white;
 }
-
 
 @media only screen and (max-width: 600px) {
     .container{
