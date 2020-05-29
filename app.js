@@ -7,7 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let nextRandom = 0;
     let timerId;
+
+
     let audio = new Audio('./Assets/Sounds/game.mp3');
+    let moveAudio = new Audio('./Assets/Sounds/move.mp3');
+    let rotateAudio = new Audio('./Assets/Sounds/rotate.mp3');
+    let takenAudio = new Audio('./Assets/Sounds/taken.mp3');
+    let breakAudio = new Audio('./Assets/Sounds/break.mp3');
+
+
     audio.loop = true;
 
     const colors = [
@@ -92,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if(e.keyCode === 39){
             moveRight();
         } else if(e.keyCode === 40 ){
+            playAudio(moveAudio);
             moveDown();
         }
     }
@@ -109,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //freeze condition
     function freeze(){
         if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))){
+            playAudio(takenAudio);
             current.forEach(index => squares[currentPosition + index].classList.add('taken'));
             //start a new tetromino falling 
             randomTetromino = nextRandom;
@@ -130,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
             currentPosition += 1;
         }
-
         draw();
+        playAudio(moveAudio);
     }
 
       //move tetromino to the right
@@ -144,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw();
+        playAudio(moveAudio);
     }
 
     //rotate the tetromino
@@ -155,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         current = theTetrominoes[randomTetromino][currentRotation];
         draw();
+        playAudio(rotateAudio);
     }
 
 
@@ -209,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
             if(row.every(index => squares[index].classList.contains('taken'))){
                 score += 10;
+                playAudio(breakAudio);
                 scoreDisplay.innerHTML = score;
                 row.forEach(index => {
                     squares[index].classList.remove("taken");
@@ -229,6 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(timerId);
         }
     }
-
+  
+    function playAudio(audio){
+        (!audio.paused) ? audio.cloneNode().play() : audio.play();
+    }
 })
 
