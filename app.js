@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let nextRandom = 0;
     let timerId;
+    let gamePaused;
 
     let gameAudio = new Audio('./Assets/Sounds/game.mp3');
     let moveAudio = new Audio('./Assets/Sounds/move.mp3');
@@ -91,6 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //assign function to keyCode
     function control(e){
+        if(gamePaused) return false;
+
         if(e.keyCode === 37){
             moveLeft();
         } else if(e.keyCode === 38){
@@ -203,7 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(timerId);
             timerId = null;
             gameAudio.pause();
+            gamePaused = true;
         } else {
+            gamePaused = false;
             startButton.innerHTML = "<i class='fa fa-pause'></i> Pause"
             startButton.style.backgroundColor = "#ff8c00"
             gameAudio.play();
@@ -211,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timerId = setInterval(moveDown, 1000);
             // nextRandom  = Math.floor(Math.random() * theTetrominoes.length);
             displayShape();
+
         }
     });
 
@@ -237,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver(){
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
             scoreDisplay.innerHTML = "Game Over";
+            gamePaused = true;
             clearInterval(timerId);
         }
     }
