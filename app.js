@@ -8,15 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextRandom = 0;
     let timerId;
 
-
-    let audio = new Audio('./Assets/Sounds/game.mp3');
+    let gameAudio = new Audio('./Assets/Sounds/game.mp3');
     let moveAudio = new Audio('./Assets/Sounds/move.mp3');
     let rotateAudio = new Audio('./Assets/Sounds/rotate.mp3');
     let takenAudio = new Audio('./Assets/Sounds/taken.mp3');
     let breakAudio = new Audio('./Assets/Sounds/break.mp3');
 
-
-    audio.loop = true;
+    gameAudio.loop = true;
 
     const colors = [
         '#56A753',
@@ -204,11 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
             startButton.style.backgroundColor = "#30942d"
             clearInterval(timerId);
             timerId = null;
-            audio.pause();
+            gameAudio.pause();
         } else {
             startButton.innerHTML = "<i class='fa fa-pause'></i> Pause"
             startButton.style.backgroundColor = "#ff8c00"
-            audio.play();
+            gameAudio.play();
             draw();
             timerId = setInterval(moveDown, 1000);
             // nextRandom  = Math.floor(Math.random() * theTetrominoes.length);
