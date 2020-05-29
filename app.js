@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
+    document.querySelector(".loader").style.display = "none";
+    document.querySelector(".container").classList.remove("hidden");
+
+
     const grid = document.querySelector(".grid");
     let squares = Array.from(document.querySelectorAll(".grid div"));
     const scoreDisplay = document.querySelector("#score");
